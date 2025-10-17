@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kampala Health Centers Map</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href=" style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h1>Kampala Health Centers Map</h1>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="search-box" placeholder="Search health centers...">
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <h2>Health Centers in Kampala</h2>
+                <ul class="health-center-list" id="health-center-list">
+                    <!-- Health centers will be populated by JavaScript -->
+                </ul>
+            </div>
+
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="north-arrow" title="North">
+                    <i class="fas fa-arrow-up"></i>
+                </div>
+                <div class="map-controls">
+                    <button class="current-location-btn" id="current-location-btn" title="Show my location">
+                        <i class="fas fa-crosshairs"></i>
+                        <span>My Location</span>
+                    </button>
+                    <button class="reset-view-btn" id="reset-view-btn" title="Reset view">
+                        <i class="fas fa-home"></i>
+                        <span>Reset View</span>
+                    </button>
+                </div>
+                <div class="legend">
+                    <h3>Health Center Types</h3>
+                    <div class="legend-item">
+                        <div class="legend-color hospital"></div>
+                        <span>Hospital</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color clinic"></div>
+                        <span>Clinic</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color dispensary"></div>
+                        <span>Dispensary</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color health-center"></div>
+                        <span>Health Center</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- Footer -->
+<footer class="map-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>About This Map</h4>
+            <p>Interactive map showing healthcare facilities in Kampala, Uganda. Find hospitals, clinics, health centers, and dispensaries near you.</p>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Need Help?</h4>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Emergency Contact:</strong>
+                    <span>+256-800-111-222</span>
+                </div>
+                <div class="contact-item">
+                    <strong>Ministry of Health:</strong>
+                    <span>+256-414-342-000</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Quick Actions</h4>
+            <div class="action-buttons">
+                <button id="print-map-btn" class="action-btn">
+                    <i class="fas fa-print"></i>
+                    Print Map
+                </button>
+                <button id="share-map-btn" class="action-btn">
+                    <i class="fas fa-share-alt"></i>
+                    Share
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2024 Kampala Health Centers Map | All rights reserved | Data sourced from OpenStreetMap and manually created.</p>
+    </div>
+</footer>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Health Centers Data -->
+    <script src="data.js"></script>
+    
+    <!-- Main Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

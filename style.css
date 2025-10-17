@@ -1,0 +1,449 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 140vh; /* Keep full viewport height */
+}
+
+header {
+    background: linear-gradient(135deg, #1a6dbb, #0d4d8c);
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    justify-content: center;
+}
+
+.logo i {
+    font-size: 1.8rem;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.search-container {
+    position: relative;
+    width: 300px;
+}
+
+#search-box {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#search-box:focus {
+    outline: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+    height: calc(100vh - 200px); /* Reduced height to make space for footer */
+}
+
+.sidebar {
+    width: 320px;
+    background: #ffffff;
+    padding: 1.5rem;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar h2 {
+    color: #1a6dbb;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eaeaea;
+}
+
+.health-center-list {
+    list-style: none;
+}
+
+.health-center-item {
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid #1a6dbb;
+}
+
+.health-center-item:hover {
+    background: #e6f2ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.health-center-item.active {
+    background: #d4e7ff;
+    border-left: 4px solid #0d4d8c;
+}
+
+.health-center-name {
+    font-weight: 600;
+    color: #1a6dbb;
+    margin-bottom: 0.3rem;
+}
+
+.health-center-type {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.health-center-contact {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.map-container {
+    flex: 1;
+    position: relative;
+    min-height: 0;
+    height: 100%; /* Ensure map container takes full height of main-content */
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+.map-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.current-location-btn, .reset-view-btn {
+    background: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1rem;
+    color: #1a6dbb;
+    transition: all 0.3s ease;
+}
+
+.current-location-btn:hover, .reset-view-btn:hover {
+    background: #f0f7ff;
+    transform: scale(1.05);
+}
+
+.north-arrow {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: white;
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.north-arrow i {
+    color: #1a6dbb;
+    font-size: 1.2rem;
+}
+
+.leaflet-control-scale {
+    margin-bottom: 20px !important;
+    margin-left: 20px !important;
+}
+
+/* Updated Legend Styles */
+.map-legend {
+    position: absolute;
+    bottom: 60px;
+    left: 20px;
+    z-index: 1000;
+    background: white;
+    padding: 12px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    font-size: 0.9rem;
+    min-width: 180px;
+}
+
+.map-legend h3 {
+    margin: 0 0 10px 0;
+    color: #1a6dbb;
+    font-size: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 3px 0;
+}
+
+.legend-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.legend-icon.hospital {
+    color: #e74c3c;
+}
+
+.legend-icon.clinic {
+    color: #3498db;
+}
+
+.legend-icon.health-center {
+    color: #2ecc71;
+}
+
+.legend-icon.dispensary {
+    color: #f39c12;
+}
+
+.legend-icon.user-location {
+    color: #9b59b6;
+}
+
+/* Footer Styles */
+.map-footer {
+    background: linear-gradient(135deg, #1a6dbb 0%, #2c3e50 100%);
+    color: white;
+    padding: 20px 0 0 0;
+    width: 100%;
+    border-top: 4px solid #3498db;
+    flex-shrink: 0;
+    /* Remove margin-top: auto since we're controlling height manually */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h4 {
+    color: #ecf0f1;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.footer-section p {
+    line-height: 1.6;
+    color: #bdc3c7;
+    margin: 0;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-item strong {
+    color: #ecf0f1;
+    font-size: 0.9em;
+}
+
+.contact-item span {
+    color: #3498db;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #3498db;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+}
+
+.action-btn:hover {
+    background: #3498db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.action-btn i {
+    font-size: 1.1em;
+}
+
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #bdc3c7;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+        height: calc(100vh - 250px); /* Adjust for mobile */
+    }
+
+    .sidebar {
+        width: 100%;
+        max-height: 40vh; /* Reduce sidebar height on mobile */
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+    
+    .map-controls {
+        bottom: 80px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .footer-section {
+        min-width: 100%;
+    }
+    
+    .action-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .action-btn {
+        flex: 1;
+        min-width: 120px;
+        justify-content: center;
+    }
+    
+    /* Adjust map legend position for mobile */
+    .map-legend {
+        bottom: 100px;
+        left: 10px;
+        right: 10px;
+        min-width: auto;
+    }
+}
+
+/* Additional media query for very small screens */
+@media (max-width: 480px) {
+    .main-content {
+        height: calc(100vh - 280px); /* Further reduce height for very small screens */
+    }
+    
+    .sidebar {
+        max-height: 35vh;
+    }
+    
+    .footer-content {
+        padding: 0 15px 15px 15px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .action-btn {
+        min-width: 100%;
+    }
+}
